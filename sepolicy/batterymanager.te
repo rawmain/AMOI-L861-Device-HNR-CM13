@@ -1,0 +1,3 @@
+allow platform_app battery_service:service_manager { find };
+#allow batterymanager battery_service:service_manager { find };
+allow untrusted_app battery_service:service_manager { find };
