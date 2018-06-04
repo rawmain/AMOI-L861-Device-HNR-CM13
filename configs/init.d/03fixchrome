@@ -1,0 +1,12 @@
+#!/system/bin/sh
+# This script will disable the HW Video Codec Accelaration for chrome based browsers
+if [ ! -e "/data/local/chrome-command-line" ] ; then
+echo "chrome --enable-command-line-on-non-rooted-devices --disable-accelerated-video-decode --disable-gpu-vsync" >/data/local/chrome-command-line
+chmod 755 /data/local/chrome-command-line
+fi
+if [ ! -e "/data/local/tmp/chrome-command-line" ] ; then
+echo "chrome --enable-command-line-on-non-rooted-devices --disable-accelerated-video-decode --disable-gpu-vsync" >/data/local/tmp/chrome-command-line
+chmod 755 /data/local/tmp/chrome-command-line
+fi
+
+exit 0;

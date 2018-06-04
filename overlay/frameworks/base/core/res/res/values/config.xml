@@ -18,6 +18,18 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Defines the system property to set for performance profile xe: sys.cpu.modes. Leave it
+         blank if the device do not support performance profiles -->
+    <string name="config_perf_profile_prop">sys.perf.profile</string>
+
+    <!-- When config_perf_profile_prop is defined, this value MUST be the index of
+         one of the listes values in frameworks/base/core/res/res/values/cm_arrays.xml
+         for "perf_profile_values" array. Leave it blank if the device do not support
+         performance profiles  -->
+    <string name="config_perf_profile_default_entry">1</string>
+
+		
     <!-- Enable the electron beam -->
     <bool name="config_animateScreenLights">true</bool>
 
@@ -159,11 +171,11 @@
         <item>102</item>
         <item>102</item>
         <item>102</item>
-        <item>102</item>
-        <item>102</item>
+        <item>170</item>
         <item>180</item>
-        <item>200</item>
+        <item>205</item>
         <item>210</item>
+        <item>220</item>
         <item>230</item>
         <item>255</item>
     </integer-array>
@@ -178,15 +190,15 @@
 	<item>255</item>
 	<item>255</item>
 	<item>255</item>
-	<item>255</item>
-	<item>255</item>
-	<item>255</item>
-	<item>255</item>
-	<item>255</item>
-	<item>255</item>
+	<item>0</item>
+	<item>0</item>
+	<item>0</item>
+	<item>0</item>
+	<item>0</item>
+	<item>0</item>
     </integer-array>
     <integer-array name="config_autoBrightnessKeyboardBacklightValues">
-        <item>255</item>
+    <item>255</item>
 	<item>255</item>
 	<item>255</item>
 	<item>255</item>
@@ -196,12 +208,12 @@
 	<item>255</item>
 	<item>255</item>
 	<item>255</item>
-	<item>255</item>
-	<item>255</item>
-	<item>255</item>
-	<item>255</item>
-	<item>255</item>
-	<item>255</item>
+	<item>0</item>
+	<item>0</item>
+	<item>0</item>
+	<item>0</item>
+	<item>0</item>
+	<item>0</item>
     </integer-array>
     
  <!-- Vibrator pattern for feedback about a long screen/key press -->
@@ -209,14 +221,11 @@
         <item>0</item>
         <item>1</item>
         <item>20</item>
-        <item>21</item>
+        <item>30</item>
     </integer-array>
 
     <!-- Vibrator pattern for feedback about touching a virtual key -->
     <integer-array name="config_virtualKeyVibePattern">
-        <item>0</item>
-        <item>10</item>
-        <item>20</item>
         <item>30</item>
     </integer-array>
 
@@ -292,7 +301,7 @@
     <bool name="config_safe_media_volume_enabled">true</bool>
 
     <!-- If supported, are dreams enabled? (by default) -->
-    <bool name="config_dreamsEnabledByDefault">true</bool>
+    <bool name="config_dreamsEnabledByDefault">false</bool>
 
 
     <!-- Flag indicating if the speed up audio on mt call code should be executed -->
@@ -351,4 +360,15 @@
     <integer name="config_lowMemoryKillerMinFreeKbytesAbsolute">-1</integer>
 
     <bool name="config_user_notification_of_restrictied_mobile_access">false</bool>
+    
+    
+    <bool name="config_lidControlsSleep">false</bool>
+
+    <!-- Doze mode 
+    <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
+    <integer name="config_screenBrightnessDoze">2</integer>
+    <bool name="config_dozeAfterScreenOff">true</bool>
+    <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
+    <bool name="config_intrusiveNotificationLed">true</bool> -->
+    
 </resources>

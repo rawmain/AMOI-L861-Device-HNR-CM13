@@ -1,0 +1,15 @@
+#!/system/bin/sh
+# change Res. at Boot
+# 
+RESOLUTION ="1080x1920"
+DENSITY="480"
+
+# wait for wm manager
+while : ; do  sleep 1; ( wm size | grep "Physical") && break ; done
+
+if ! wm size | grep "$RESOLUTION" ; then 
+wm size $RESOLUTION
+wm density $DENSITY
+#reboot
+fi
+exit 0;

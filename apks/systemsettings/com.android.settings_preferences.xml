@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="enable_multi_window" value="false" />
+    <boolean name="show_touches" value="false" />
+    <boolean name="adb_notify" value="true" />
+    <boolean name="debug_view_attributes" value="false" />
+    <string name="select_usb_configuration">none</string>
+    <boolean name="wait_for_debugger" value="false" />
+    <boolean name="force_hw_ui" value="false" />
+    <boolean name="show_cpu_usage" value="false" />
+    <boolean name="bugreport_in_power" value="false" />
+    <boolean name="wifi_verbose_logging" value="false" />
+    <boolean name="immediately_destroy_activities" value="false" />
+    <boolean name="oem_unlock_enable" value="false" />
+    <boolean name="hardware_tunable_restored" value="true" />
+    <boolean name="verify_apps_over_usb" value="true" />
+    <boolean name="pointer_location" value="false" />
+    <boolean name="show_all_anrs" value="false" />
+    <boolean name="mobile_data_always_on" value="false" />
+    <boolean name="force_msaa" value="false" />
+    <boolean name="development_shortcut" value="false" />
+    <boolean name="legacy_dhcp_client" value="false" />
+    <boolean name="enable_adb" value="true" />
+    <string name="qs_quick_pulldown">1</string>
+    <string name="hdcp_checking">drm-only</string>
+    <boolean name="adb_over_network" value="false" />
+    <boolean name="bt_hci_snoop_log" value="false" />
+    <boolean name="disable_overlays" value="false" />
+    <boolean name="advanced_reboot" value="false" />
+    <boolean name="disable_nav_keys" value="false" />
+    <boolean name="debug_layout" value="false" />
+    <boolean name="wifi_aggressive_handover" value="false" />
+    <string name="status_bar_clock">2</string>
+    <boolean name="show_hw_screen_udpates" value="false" />
+    <boolean name="kill_app_longpress_back" value="false" />
+    <boolean name="strict_mode" value="false" />
+    <boolean name="wifi_display_certification" value="false" />
+    <boolean name="show_hw_layers_udpates" value="false" />
+    <boolean name="usb_audio" value="false" />
+    <boolean name="enable_terminal" value="false" />
+    <boolean name="swap_volume_buttons" value="false" />
+    <boolean name="wifi_allow_scan_with_traffic" value="false" />
+    <string name="status_bar_battery_style">6</string>
+    <string name="status_bar_show_battery_percent">0</string>
+    <boolean name="show_screen_updates" value="false" />
+    <boolean name="force_rtl_layout_all_locales" value="false" />
+    <string name="select_logd_size">262144</string>
+    <boolean name="update_recovery" value="false" />
+</map>

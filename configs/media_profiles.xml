@@ -514,7 +514,7 @@
         minBitRate="64000" maxBitRate="55000000"
         minFrameWidth="176" maxFrameWidth="1920"
         minFrameHeight="144" maxFrameHeight="1080"
-        minFrameRate="3"  maxFrameRate="300"
+        minFrameRate="3"  maxFrameRate="30"
         maxHFRFrameWidth="1280" maxHFRFrameHeight="720"
         maxHFRMode="300" />
 
@@ -607,7 +607,7 @@
     <!--
       Codec = h.264, Baseline profile, level 4.0
     -->
-    <ExportVideoProfile name="h264" profile= "1" level="2048"/>
+    <ExportVideoProfile name="h264" profile= "2" level="2048"/>
     <!--
       Codec = h.263, Baseline profile, level 70
     -->

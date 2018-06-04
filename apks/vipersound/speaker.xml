@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <string name="audiofx.eq.bandlevels">-170;270;50;-220;200</string>
+    <string name="audiofx.eq.preset">11</string>
+    <boolean name="audiofx.bass.enable" value="true" />
+    <boolean name="audiofx.virtualizer.enable" value="false" />
+    <boolean name="audiofx.global.enable" value="false" />
+</map>

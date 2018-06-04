@@ -9,6 +9,7 @@ LOCAL_PATH := device/openstone/stonexone
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal xhdpi xxhdpi xxxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
@@ -16,11 +17,30 @@ PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
 # Recovery allowed devices
 TARGET_OTA_ASSERT_DEVICE := stonexone,Vowney_Lite,KING7,king7,L861,STONEX,STONEXONE,AMOI
 
+# TRON APPS
+PRODUCT_PACKAGES += \
+	ViperSound \
+	AdAway \
+
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/apks/themes/S7D.apk:data/app/S7D/S7D.apk \
+    $(LOCAL_PATH)/apks/themes/efu.apk:data/app/Efu/efu.apk \
+    $(LOCAL_PATH)/apks/themes/lgg4.apk:data/app/LgG4/lgg4.apk \
+    $(LOCAL_PATH)/apks/themes/xpz5.apk:data/app/Xpz5/xpz5.apk \
+    $(LOCAL_PATH)/apks/themes/gs7.apk:data/app/Gs7/gs7.apk \
+    $(LOCAL_PATH)/apks/themes/M9.apk:data/app/M9/M9.apk \
+    $(LOCAL_PATH)/apks/themes/OnePlus.apk:data/app/OnePlus/OnePlus.apk \
+    $(LOCAL_PATH)/apks/themes/Vibe.apk:data/app/VibeUi/Vibe.apk \
+    $(LOCAL_PATH)/apks/themes/XOS.apk:data/app/Xos/XOS.apk \
+    $(LOCAL_PATH)/apks/themes/tones.apk:data/app/Tones/tones.apk \
+    $(LOCAL_PATH)/apks/themes/YahooWeatherProvider.apk:data/app/YahooWeather/YahooWeatherProvider.apk \
+    $(LOCAL_PATH)/apks/mixed/ABR.apk:data/app/AppsBackup/ABR.apk \
+    	
+# end TRON
 
 PRODUCT_PACKAGES += \
-   WeatherListWidget \
    WeatherProvider \
-   WeatherManagerService
+   WeatherManagerService \
 
 PRODUCT_PACKAGES += \
    libxlog \
@@ -38,8 +58,8 @@ PRODUCT_PACKAGES += \
 	Superuser \
     su
 
-PRODUCT_PACKAGES += \
-    sensors.mt6795 \
+#PRODUCT_PACKAGES += \
+#    sensors.default \
 
 # Camera
 
@@ -49,7 +69,8 @@ PRODUCT_PACKAGES += \
 	libjtranscode \
 	libMtkVideoTranscoder \
 	libcamera_parameters_ext \
-    Snap
+    GoogleCam \
+    Snap \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1 \
@@ -101,6 +122,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_em.xml:system/etc/audio_em.xml \
     $(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf \
     $(LOCAL_PATH)/configs/init.d/01audiolevel:system/etc/init.d/01audiolevel \
+    $(LOCAL_PATH)/configs/init.d/02initsettings:system/etc/init.d/02initsettings \
 #    $(LOCAL_PATH)/configs/audio_param/AudioParamOptions.xml:system/etc/audio_param/AudioParamOptions.xml
 
 
@@ -110,6 +132,9 @@ PRODUCT_PACKAGES += \
     charger \
     charger_res_images \
 
+# Display
+PRODUCT_PACKAGES += \
+	MiraVision
 
 # livedisplay
 #PRODUCT_PACKAGES += \
@@ -153,11 +178,22 @@ PRODUCT_PACKAGES += \
     
 # Bluetooth
 PRODUCT_PACKAGES += \
-    audio.a2dp.default
+    audio.a2dp.default \
+    bt_stack.conf \
+    iot_devlist.conf \
+    auto_pair_devlist.conf \
+#    libbtprofile \
+
+    
 PRODUCT_PACKAGES += \
     libbt-vendor
+
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/bt_did.conf:system/etc/bluetooth/bt_did.conf
+    $(LOCAL_PATH)/configs/bt_did.conf:system/etc/bluetooth/bt_did.conf \
+    $(LOCAL_PATH)/configs/ble_stack.conf:system/etc/bluetooth/ble_stack.conf \
+    $(LOCAL_PATH)/configs/bt_config.conf:/data/misc/bluedroid/bt_stack.conf \
+
+
 
 # Keyboard layout
 PRODUCT_COPY_FILES += \
@@ -167,8 +203,8 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    power.default \
-#    power.mt6795
+    power.mt6795
+#    power.default \
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
@@ -188,10 +224,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/meta_init.modem.rc:root/meta_init.modem.rc \
     $(LOCAL_PATH)/rootdir/meta_init.project.rc:root/meta_init.project.rc \
     $(LOCAL_PATH)/rootdir/meta_init.rc:root/meta_init.rc \
-    $(LOCAL_PATH)/rootdir/init.performance.rc:root/init.performance.rc \
+    $(LOCAL_PATH)/rootdir/init.trace.rc:root/init.trace.rc \
     $(LOCAL_PATH)/rootdir/ueventd.mt6795.rc:root/ueventd.mt6795.rc \
     $(LOCAL_PATH)/rootdir/init.recovery.mt6795.rc:root/init.recovery.mt6795.rc \
-    $(LOCAL_PATH)/rootdir/sbin/umod.sh:root/sbin/umod.sh \
 
 # Telecom
 PRODUCT_COPY_FILES += \
@@ -276,15 +311,15 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Wifi
 PRODUCT_PACKAGES += \
-    lib_driver_cmd_mt66xx \
-    libwifi-hal-mt66xx \
     wifi_hal \
     libwpa_client \
     hostapd \
     hostapd_cli \
     dhcpcd.conf \
     wpa_supplicant \
-    wpa_supplicant.conf
+    wpa_supplicant.conf \
+    lib_driver_cmd_mt66xx \
+    libwifi-hal-mt66xx \    
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
@@ -316,10 +351,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 #    ro.debuggable=1 \
 #    ro.zygote=zygote64_32 \
 #    camera.disable_zsl_mode=1 \
-#    ro.mount.fs=EXT4 \
+    ro.mount.fs=EXT4 \
 #    persist.service.acm.enable=0 \
 #    ro.boot.selinux=0 \
-#    persist.sys.usb.config=mtp,adb
+    persist.sys.usb.config=mtp,adb
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.kernel.android.checkjni=0 \
@@ -327,7 +362,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.call_recording.enabled=true \
     persist.call_recording.src=1 \
     persist.debug.wfd.enable=1 \
-    ro.product.manufacturer=AMOI
+#    ro.product.manufacturer=AMOI
 
 PRODUCT_PACKAGES += \
     librs_jni \
@@ -338,8 +373,12 @@ PRODUCT_PACKAGES += \
     libtinyxml
     
 # Browser
-PRODUCT_PACKAGES += \
-	Eleven
+#PRODUCT_PACKAGES += \
+#	Jelly
+
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/configs/init.d/03fixchrome:system/etc/init.d/03fixchrome \
+# End Browser
 
 # FMRadio
 

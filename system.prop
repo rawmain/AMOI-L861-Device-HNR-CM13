@@ -6,12 +6,19 @@
 #
 ro.config.vc_call_vol_steps=14
 ro.config.media_vol_steps=30
+# camera YUV
+mtk.venc.h264.set.nbm.mode=0
+mtk.omxvdec.ufo=0
+mtk.vcodec.detect.trailing=0
+mtk.omxvdec.ad.vp=0
+mtk.vdec.h264.ec=0
 
 #logcat.live=disable
-pm.sleep_mode=1
 ro.ril.enable.amr.wideband=1
 ro.config.hw_fast_dormancy=1
 ro.config.nocheckin=1
+
+ro.telephony.default_network=10
 
 rild.libpath=/system/lib64/mtk-ril.so
 rild.libargs=-d /dev/ttyC0
@@ -67,8 +74,14 @@ qemu.hw.mainkeys=1
 ro.kernel.zio=38,108,105,16
 
 # Disable dirty region for Mali
-debug.hwui.render_dirty_regions=true
 
+debug.hwui.render_dirty_regions=false
+hwui.render_dirty_regions=false
+ro.sf.hwvsync.disable=1
+debug.sf.no_hw_vsync=1
+#debug.sf.sw_vsync_fps=60
+#debug.hwc.period_io
+#debug.hwc.period_req
 #qinhai change density
 ro.sf.lcd_density=640
 
@@ -117,7 +130,9 @@ ril.specific.sm_cause=0
 bgw.current3gband=0
 ril.external.md=0
 ro.mtk_cam_lomo_support=1
-ro.btstack=blueangel
+#ro.btstack=blueangel
+#persist.bt.a2dp_offload_cap=sbc-aptx-aptxhd
+#qcom.bluetooth.soc=smd
 ro.sf.hwrotation=0
 ril.current.share_modem=1
 curlockscreen=1
@@ -160,6 +175,7 @@ ro.mtk_dhcpv6c_wifi=1
 ro.have_aacencode_feature=1
 ro.mtk_oma_drm_support=1
 ro.mtk_widevine_drm_support=1
+ro.mtk_widevine_drm_l3_support=1
 ro.mtk_eap_sim_aka=1
 ro.mtk_audio_ape_support=1
 ro.mtk_flv_playback_support=1
@@ -240,3 +256,17 @@ ro.rommanager.developerid=cyanogenmod
 ro.com.google.clientidbase=android-google
 #af.resouce.extdac_support=0
 #af.fm.force_direct_mode_type=1
+#
+#
+#
+#
+#
+# Saves some battery without reducing performances
+wifi.supplicant_scan_interval=3000
+pm.sleep_mode=1
+power.saving.mode=1
+ro.ril.disable.power.collapse=0
+ro.ril.power_collapse=1
+ro.vold.umsdirtyratio=20
+
+

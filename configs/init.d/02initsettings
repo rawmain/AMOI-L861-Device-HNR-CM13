@@ -1,0 +1,39 @@
+#!/system/bin/sh
+
+if [ ! -e "/data/pre-finish" ] ; then
+
+while true ;do if busybox test -e "/storage/emulated/0"  ; then break; fi ; sleep 2 ;done
+sleep 10
+
+BP="/system/etc/pre-defaults"
+#for i in $(find "$BP" -type f)
+find "$BP" -type f -print0 | while read -d $'\0' i
+do 
+CF=$(sed "s:$BP::g" <<<"$i")
+#if [ ! -e "$CF" ] ; then
+echo "install $CF"
+ND=$(dirname "$CF")
+if [ ! -e "$ND" ] ; then
+mkdir -p "$ND"
+cld=$(dirname "$ND")
+ow=$(stat -c%U "$cld"|xargs)
+gr=$(stat -c%U "$cld"|xargs)
+chmod 771 "$ND"
+chown "$ow":"$gr" "$ND"
+fi
+cp -fp "$i" "$CF"
+cld=$(dirname "$CF")
+ow=$(stat -c%U "$cld"|xargs)
+gr=$(stat -c%U "$cld"|xargs)
+chmod 660 "$CF"
+chown "$ow":"$gr" "$CF"
+
+#fi
+done
+/system/bin/settings put global window_animation_scale "0.6"
+/system/bin/settings put global transition_animation_scale "0.6"
+/system/bin/settings put global animator_duration_scale "0.6"
+echo 1 >/data/pre-finish
+fi
+
+exit 0;
