@@ -632,6 +632,14 @@ on boot
     chown system system /sys/power/sb_state
     chmod 0660 /sys/power/sb_state
 
+# TAP TO WAKE
+    chown system system /proc/gt9xx_gesture
+    chmod 0664 /proc/gt9xx_gesture
+
+# PowerHAL
+    chown system system /sys/block/mmcblk1/queue/scheduler
+    chmod 0664 /sys/block/mmcblk1/queue/scheduler
+
 # HMP CPU hotplug strategy
     chown system system /proc/hps/rush_boost_enabled
     chmod 0664 /proc/hps/rush_boost_enabled
@@ -1176,7 +1184,7 @@ service wifi2agps /system/bin/wifi2agps
 service mnld /system/xbin/mnld
     class main
     user gps
-		group gps inet misc sdcard_rw sdcard_r media_rw system
+	group gps inet misc sdcard_rw sdcard_r media_rw system
     socket mnld stream 660 gps system
 
 service ipod /system/bin/ipod

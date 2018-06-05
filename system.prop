@@ -79,9 +79,9 @@ debug.hwui.render_dirty_regions=false
 hwui.render_dirty_regions=false
 ro.sf.hwvsync.disable=1
 debug.sf.no_hw_vsync=1
-#debug.sf.sw_vsync_fps=60
-#debug.hwc.period_io
-#debug.hwc.period_req
+#debug.sf.sw_vsync_fps=50
+#debug.hwc.period_io=5000
+#debug.hwc.period_req=5000
 #qinhai change density
 ro.sf.lcd_density=640
 

@@ -31,6 +31,6 @@
     <fraction name="def_window_animation_scale">60%</fraction>
     <fraction name="def_window_transition_scale">60%</fraction>
     
-    <bool name="def_backup_enabled">true</bool>
+    <bool name="def_backup_enabled">false</bool>
     
 </resources>

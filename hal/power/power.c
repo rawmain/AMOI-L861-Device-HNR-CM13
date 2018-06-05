@@ -287,12 +287,20 @@ static void power_hint( __attribute__((unused)) struct power_module *module,
 
 void set_feature(struct power_module *module, feature_t feature, int state)
 {
-	
+
+/*	
 #ifdef TAP_TO_WAKE_NODE
     char tmp_str[64];
     if (feature == POWER_FEATURE_DOUBLE_TAP_TO_WAKE) {
         snprintf(tmp_str, 64, "%d", state);
         power_fwrite(TAP_TO_WAKE_NODE, tmp_str);
+        return;
+    }
+#endif */
+#ifdef TAP_TO_WAKE_NODE
+    if (feature == POWER_FEATURE_DOUBLE_TAP_TO_WAKE) {
+            ALOGI("Double tap to wake is %s.", state ? "enabled" : "disabled");
+            sysfs_write_str(TAP_TO_WAKE_NODE, state ? "1" : "0");
         return;
     }
 #endif
