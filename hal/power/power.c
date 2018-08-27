@@ -27,6 +27,14 @@
 
 #include "power.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <signal.h>
+#include <sys/file.h>
+#include <sys/wait.h>
+
+
+
 #define MT_HPS_PATH "/proc/hps/"
 #define MT_RUSH_BOOST_PATH "/proc/hps/rush_boost_enabled"
 #define MT_FPS_UPPER_BOUND_PATH "/sys/kernel/debug/ged/hal/custom_upbound_gpu_freq"
@@ -125,6 +133,10 @@ static void power_set_interactive(__attribute__((unused)) struct power_module *m
 
     if (on) {
 		ALOGD("%s: interactive on", __func__);
+		sysfs_write_int(MT_HPS_PATH "num_limit_power_serv",profiles[current_power_profile].num_limit_power_serv);
+		sysfs_write_int(CPUFREQ_PATH "scaling_max_freq", profiles[current_power_profile].scaling_max_freq);
+		sysfs_write_int(GPUFREQ_PATH "gpufreq_opp_max_freq", profiles[current_power_profile].gpu_opp_max_freq);
+		    
         sysfs_write_int(INTERACTIVE_PATH "hispeed_freq",
                         profiles[current_power_profile].hispeed_freq);
         sysfs_write_int(INTERACTIVE_PATH "go_hispeed_load",
@@ -134,7 +146,12 @@ static void power_set_interactive(__attribute__((unused)) struct power_module *m
         sysfs_write_int(CPUFREQ_PATH "scaling_min_freq",
                         profiles[current_power_profile].scaling_min_freq);
     } else {
+		
+
+		
+		
 		ALOGD("%s: interactive off", __func__);
+		
         sysfs_write_int(INTERACTIVE_PATH "hispeed_freq",
                         profiles[current_power_profile].hispeed_freq_off);
         sysfs_write_int(INTERACTIVE_PATH "go_hispeed_load",
@@ -143,6 +160,10 @@ static void power_set_interactive(__attribute__((unused)) struct power_module *m
                         profiles[current_power_profile].target_loads_off);
         sysfs_write_int(CPUFREQ_PATH "scaling_min_freq",
                         profiles[current_power_profile].scaling_min_freq_off);
+                        
+        sysfs_write_int(MT_HPS_PATH "num_limit_power_serv",1);
+		sysfs_write_int(CPUFREQ_PATH "scaling_max_freq", 1950000);
+		sysfs_write_int(GPUFREQ_PATH "gpufreq_opp_max_freq", 676000);
     } 
 }
 
@@ -157,6 +178,28 @@ static int boostpulse_open()
     return boostpulse_fd;
 }
 
+
+static char THERMAL_PATH[] = "/system/bin/thermal_manager";
+
+static void exec_tp(char *profile)
+{
+	if( access( THERMAL_PATH, F_OK ) != -1 ){
+		if( access( profile, F_OK ) != -1 ) {
+			char cmd[512] = {0};
+			sprintf(cmd, "%s %s &", THERMAL_PATH, profile);
+			ALOGD("set TProfile : %s", profile);
+
+			/*Need to execute twice to effect the command*/
+			int ret = system(cmd);
+			/*
+			if ((-1 == ret) || (0 != WEXITSTATUS(ret))) {
+				ALOGE("1. executing %s failed: %s", THERMAL_PATH, strerror(errno));
+			} */
+			
+		}
+	}
+}
+
 static void set_power_profile(int profile)
 {
     if (!is_profile_valid(profile)) {
@@ -167,6 +210,8 @@ static void set_power_profile(int profile)
     if (profile == current_power_profile)
         return;
 
+    current_power_profile = profile;
+	
     ALOGD("%s: setting profile %d", __func__, profile);
     ALOGD("%s: setting profile Freq %d", __func__, profiles[profile].scaling_max_freq);
     sysfs_write_str("/sys/block/mmcblk0/queue/scheduler", profiles[profile].scheduler);
@@ -191,15 +236,21 @@ static void set_power_profile(int profile)
     sysfs_write_int(MT_HPS_PATH "num_limit_ultra_power_saving",profiles[profile].num_limit_power_serv);
     sysfs_write_int(MT_HPS_PATH "num_limit_low_battery",profiles[profile].num_limit_power_serv);
     sysfs_write_int(MT_HPS_PATH "num_limit_power_serv",profiles[profile].num_limit_power_serv);
-    sysfs_write_int(MT_HPS_PATH "num_limit_thermal",profiles[profile].num_limit_power_serv); // must be the same as num_limit_power_serv
+    sysfs_write_int(MT_HPS_PATH "num_limit_thermal",profiles[profile].num_limit_power_serv); // cooling
 
-    
+
     // thermal cpu turbo mode
     sysfs_write_int(CPU_PATH "cpufreq_turbo_mode", profiles[profile].cpufreq_turbo_mode);
     // gpufreq
     sysfs_write_int(GPUFREQ_PATH "gpufreq_opp_max_freq", profiles[profile].gpu_opp_max_freq);
-    current_power_profile = profile;
+   
+    
+    // set thermal profile
+	exec_tp(profiles[profile].thermal_profile);
+	sysfs_write_int(CPU_PATH "cpufreq_limited_power", 0);
 }
+
+
 
 static void set_cpuboost(){
 	    if (!is_profile_valid(current_power_profile)) {
@@ -238,6 +289,7 @@ static void power_hint( __attribute__((unused)) struct power_module *module,
         if (low_power == 1){
             //power_fwrite(MT_FPS_UPPER_BOUND_PATH, "0");
             power_fwrite(MT_RUSH_BOOST_PATH, "0");
+            //current_power_profile = PROFILE_POWER_SAVE;
         } else {
             //power_fwrite(MT_FPS_UPPER_BOUND_PATH, "4");
             power_fwrite(MT_RUSH_BOOST_PATH, "1");

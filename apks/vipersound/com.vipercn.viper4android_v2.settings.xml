@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <string name="viper4android.settings.lastversion">2.4.0.1</string>
+    <boolean name="viper4android.settings.onlineactive" value="true" />
+    <boolean name="viper4android.settings.driverconfigured" value="true" />
+    <string name="viper4android.settings.ddc_db_compatible">2.4.0.1</string>
+</map>

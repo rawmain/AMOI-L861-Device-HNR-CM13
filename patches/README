@@ -1,5 +1,4 @@
-This is patch directory Ulefone Metal
+This is patch directory
 
 cd WORKING_DIR
-sh device/openstone/stonexone/patches/install.sh
-sh device/openstone/stonexone/patches/uninstall.sh
+sh device/xiaomi/hennessy/patches/apply.sh

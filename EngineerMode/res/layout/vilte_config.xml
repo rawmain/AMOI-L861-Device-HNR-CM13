@@ -136,6 +136,12 @@
             android:layout_marginTop="5dp" />
 
         <TextView
+            android:id="@+id/vilte_ims_simulate_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp" />
+
+        <TextView
             android:id="@+id/vilte_video_fps_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,6 +1,9 @@
 #
 # XLOG service configuration
 #
+
+# LD_LIBRARY_PATH="/system/lib" LD_PRELOAD="libccci_util.so:libmtk_symbols.so:liblog.so:libxlog.so" 
+
 service xlogboot /system/bin/xlog boot
     user root
     oneshot

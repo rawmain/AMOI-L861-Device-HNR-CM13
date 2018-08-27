@@ -235,7 +235,7 @@ public class PrefsFragment extends PreferenceFragment {
             removePreference(screen, "bluetooth");
         }
 
-        removePreference(screen, "audio");
+        // removePreference(screen, "audio");
 
         // wifi is not ready if MTK_WLAN_SUPPORT isn't defined
         if (!ChipSupport.isFeatureSupported(ChipSupport.MTK_WLAN_SUPPORT)) {
@@ -430,11 +430,11 @@ public class PrefsFragment extends PreferenceFragment {
             removePreference(screen, "simme_lock1");
             removePreference(screen, "simme_lock2");
             removePreference(screen, "modem_switch");
-            removePreference(screen, "lte_config");
-            removePreference(screen, "lte_network_mode");
-            removePreference(screen, "lte_network_info");
-            removePreference(screen, "lte_tool");
-            removePreference(screen, "world_mode");
+          //  removePreference(screen, "lte_config");
+          //  removePreference(screen, "lte_network_mode");
+          //  removePreference(screen, "lte_network_info");
+          //  removePreference(screen, "lte_tool");
+          //  removePreference(screen, "world_mode");
             removePreference(screen, "md_em_filter");
             removePreference(screen, "ehrpd_bg_data");
             removePreference(screen, "misc_config");

@@ -2,7 +2,7 @@
 
 if [ ! -e "/data/pre-finish" ] ; then
 
-while true ;do if busybox test -e "/storage/emulated/0"  ; then break; fi ; sleep 2 ;done
+while true ;do if [ -e "/storage/emulated/0" ] ; then break; fi ; sleep 2 ;done
 sleep 10
 
 BP="/system/etc/pre-defaults"

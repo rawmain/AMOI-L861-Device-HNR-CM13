@@ -524,6 +524,8 @@
     <string name="Audio_MagiAsr">MagiASR Verify Mode Enable</string>
     <string name="Audio_AecRec_Text">Enable recording with AEC processing</string>
     <string name="Audio_AecRec">Record with AEC enable</string>
+    <string name="Audio_Custom_Param_Title">Enable customized audio parameter</string>
+    <string name="Audio_Custom_Param">Customized audio parameter enable</string>    
     <string name="Audio_DebugInfo_ParameterText">Please choose the parameter:</string>
     <string name="Audio_DebugInfo_ValueText">Please input the value:</string>
     <string name="Audio_DebugInfo_EditText">0</string>
@@ -579,6 +581,8 @@
     <string name="input_null_tip">Please input the value.</string>
     <string name="set_success_tip">set parameter success.</string>
     <string name="set_failed_tip">set parameter failed.</string>
+    <string name="init_error_title">Init Error</string>
+    <string name="init_error_msg">Init table param error</string>
     <string name="no_sdcard_title">SD Card is not available</string>
     <string name="no_sdcard_msg">Please insert the SD Card.</string>
     <string name="sdcard_busy_title">SD card is busy</string>
@@ -620,6 +624,35 @@
     <string name="audio_wakelock">Wake Lock</string>
     <string name="audio_wakelock_lock">Locked</string>
     <string name="audio_wakelock_unlock">Unlocked</string>
+    <string name="audio_volume_title">Volume</string>
+    <string name="audio_volume_voice">Voice</string>
+    <string name="audio_volume_voip">VoIP</string>
+    <string name="audio_volume_playback">Audio Playback</string>
+    <string name="audio_volume_record">Audio Record</string>
+    <string name="audio_volume_ul_gain">UL Gain</string>
+    <string name="audio_volume_dl_gain">DL Gain</string>
+    <string name="audio_volume_sidetone_gain">Sidetone Gain</string>
+    <string name="audio_volume_digital_gain">Digital Gain</string>
+    <string name="audio_volume_heaset_pga">Heaset PGA</string>
+    <string name="audio_volume_speaker_pga">Speaker PGA</string>
+    <string name="audio_volume_set">Set</string>
+    <string name="audio_volume_error_dl_empty">Dl Gain value could not be empty\r\n</string>
+    <string name="audio_volume_error_digi_empty">Digital Gain value could not be empty\r\n</string>
+    <string name="audio_volume_error_dl_invalid">" in Dl Gain value is invalid\r\n"</string>
+    <string name="audio_volume_error_ul_invalid">Invalid Ul Gain value ( Min: %1$d Max: %2$d )\r\n</string>
+    <string name="audio_volume_error_stf_invalid">Invalid Stf Gain value ( Min: %1$d Max: %2$d )\r\n</string>
+    <string name="audio_volume_error_headset_invalid">Invalid Headset PGA value ( Min: %1$d Max: %2$d )\r\n</string>
+    <string name="audio_volume_error_speaker_invalid">Invalid Speaker PGA value ( Min: %1$d Max: %2$d )\r\n</string>
+    <string name="audio_volume_error_digital_gain_invalid">Invalid Digital Gain value ( Min: %1$d Max: %2$d )\r\n</string>
+    <string name="audio_volume_error_set_ditigain">Set Digital Gain failed\r\n</string>
+    <string name="audio_volume_error_set_speaker_pga">Set Speaker PGA failed\r\n</string>
+    <string name="audio_volume_error_set_headset_pga">Set Headset PGA failed\r\n</string>
+    <string name="audio_volume_error_set_ul_gain">Set Ul Gain failed\r\n</string>
+    <string name="audio_volume_error_set_dl_gain">Set Dl Gain failed\r\n</string>
+    <string name="audio_volume_error_set_stf_gain">Set Sidetone Gain failed\r\n</string>
+    <string name="audio_volume_error_save_xml">Save to XML file failed\r\n</string>
+    <string name="audio_volume_set_success">Set succeeded</string>
+ <string name="set_cust_xml_msg">Please reboot device to enable the customized audio parameter!</string>
     <!-- Audio end -->
 
 

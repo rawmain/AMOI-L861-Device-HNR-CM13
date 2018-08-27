@@ -17,10 +17,74 @@ PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
 # Recovery allowed devices
 TARGET_OTA_ASSERT_DEVICE := stonexone,Vowney_Lite,KING7,king7,L861,STONEX,STONEXONE,AMOI
 
+#LTE Support
+
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.mtk_volte_support=1 \
+net.lte.volte_call_capable=true \
+persist.dbg.volte_avail_ovr=1 \
+persist.mtk.volte.enable=1 \
+#persist.dbg.wfc_avail_ovr=1 \
+#telephony.lteOnGsmDevice=1 \
+#telephony.lteOnCdmaDevice=1 \
+#persist.mal.mode=0 \
+#data.capability.allowedSimSlots=1 \
+#ro.volte.startup=1 \
+#ril.mal=1
+
+#ro.mtk_ims_support=1 \
+
+#ro.telephony.default_network=10 \
+#ro.mtk_ims_support=0 \
+#ro.mtk_volte_support=1 \
+#net.lte.volte_call_capable=true \
+#telephony.lteOnCdmaDevice=1 \
+#ril.subscription.types=NV,RUIM \
+#ro.mtk_lte_dc_support=1 \
+#persist.dbg.volte_avail_ovr=1 \
+#ro.mtk_vow_support=1 \
+#ro.mtk_vilte_support=0 \
+
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/rootdir/init.volte.rc:root/init.volte.rc \
+#    $(LOCAL_PATH)/rootdir/init.mal.rc:root/init.mal.rc \
+
+#PRODUCT_PACKAGES += \
+#	volte_imsm \
+#	libimsma \
+#	libimsma_socketwrapper \
+#   libmal_datamngr \
+#   libmal_epdga \
+#    libmal_imsmngr \
+#    libmal_rds \
+#    libmal_rilproxy \
+#    libmal_nwmngr \
+#    libmal_mdmngr \
+#    libmal_simmngr \
+#    mtkmal \
+#    volte_stack \
+#    volte_ua \
+#    volte_imcb
+
+#	libmal \
+#	libmdfx \
+
+#PRODUCT_PACKAGES += \
+#    ImsService \
+#	libwfo_jni \
+#	WfoService \
+#	ethernet-service \
+	
+
+
+#end LTE
+
 # TRON APPS
 PRODUCT_PACKAGES += \
+    CDS_INFO \
 	ViperSound \
 	AdAway \
+	YGPS \
 
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/apks/themes/S7D.apk:data/app/S7D/S7D.apk \
@@ -34,7 +98,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/apks/themes/XOS.apk:data/app/Xos/XOS.apk \
     $(LOCAL_PATH)/apks/themes/tones.apk:data/app/Tones/tones.apk \
     $(LOCAL_PATH)/apks/themes/YahooWeatherProvider.apk:data/app/YahooWeather/YahooWeatherProvider.apk \
-    $(LOCAL_PATH)/apks/mixed/ABR.apk:data/app/AppsBackup/ABR.apk \
+    $(LOCAL_PATH)/apks/mixed/Lineantivirus.apk:data/app/LINE/Lineantivirus.apk \
+    $(LOCAL_PATH)/apks/mixed/BraveBrowser.apk:data/app/BraveBrowser/BraveBrowser.apk \
     	
 # end TRON
 
@@ -69,16 +134,19 @@ PRODUCT_PACKAGES += \
 	libjtranscode \
 	libMtkVideoTranscoder \
 	libcamera_parameters_ext \
-    GoogleCam \
     Snap \
+    
+#    GoogleCam \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1 \
     media.stagefright.legacyencoder=true \
     media.stagefright.less-secure=true \
-	persist.camera.HAL3.enabled=1 \
-	persist.camera.eis.enable=1 \
-	camera.disable_zsl_mode=1
+    persist.camera.eis.enable=1 \
+    #camera.disable_zsl_mode=1
+	#persist.camera.HAL3.enabled=1 \
+	#persist.camera.eis.enable=1 \
+	
 # Audio
 
 PRODUCT_PACKAGES += \
@@ -88,33 +156,10 @@ PRODUCT_PACKAGES += \
     libtinyalsa \
     libtinycompress \
     libtinymix \
-#    libaudiopolicymanager \
-#    libaudiopolicymanagerdefault \
-#    libaudiopolicyservice \
 
     
 
     
-#    libtinyxml
-# MTK Audio
-# PRODUCT_PACKAGES += \
-#	libfmjni \
-#	libfmmt6620 \
-#	libfmmt6627 \
-#	libfmmt6628 \
-#	libfmmt6630 \
-#	libfmcust
-#	AudioSetParam \
-#	libaudio_param_parser \
-#	libaudiocustparam \
-#	libaudiosetting \
-#	libaudiomtkdcremoval \
-#	libaudiocrflt \
-#	libspeech_enh_lib \
-#	libbessound_hd_mtk \
-#	libbessurround_mtk \
-#	libaudiocomponentengine \
-#    libaudiocompensationfilter \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_device.xml:system/etc/audio_device.xml \
@@ -134,7 +179,7 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
-	MiraVision
+	MiraVision \
 
 # livedisplay
 #PRODUCT_PACKAGES += \
@@ -143,6 +188,7 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
+    libRSSupportIO \
 	libion \
 	liblog \
 	libion_mtk \
@@ -229,6 +275,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.recovery.mt6795.rc:root/init.recovery.mt6795.rc \
 
 # Telecom
+PRODUCT_PACKAGES += \
+	libccci_util \
+#	ccci_fsd \
+#	ccci_mdinit \
+
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/apns-conf.xml:system/etc/apns-conf.xml \
     $(LOCAL_PATH)/configs/ecc_list.xml:system/etc/ecc_list.xml \
@@ -344,6 +396,8 @@ PRODUCT_PACKAGES += \
     
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.mount.fs=EXT4 \
+    persist.sys.usb.config=mtp,adb
 #	ro.adb.secure=0 \
 #	persist.service.adb.enable=1 \
 #	ro.secure=0 \
@@ -351,10 +405,9 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 #    ro.debuggable=1 \
 #    ro.zygote=zygote64_32 \
 #    camera.disable_zsl_mode=1 \
-    ro.mount.fs=EXT4 \
 #    persist.service.acm.enable=0 \
 #    ro.boot.selinux=0 \
-    persist.sys.usb.config=mtp,adb
+
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.kernel.android.checkjni=0 \
@@ -421,8 +474,8 @@ PRODUCT_PACKAGES += \
 	telephony-common
 	
 # Lights
-PRODUCT_PACKAGES += \
-    lights.mt6795
+# PRODUCT_PACKAGES += \
+#    lights.mt6795
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab

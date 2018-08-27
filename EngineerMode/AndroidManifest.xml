@@ -1203,21 +1203,6 @@
             android:process="com.android.phone"
             android:screenOrientation="portrait" >
         </activity>
-        <activity
-            android:name=".ims.ImsActivity"
-            android:label="@string/ims_title"
-            android:process="com.android.phone"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ims.ConfigIMSActivity"
-            android:label="@string/ims_title"
-            android:process="com.android.phone"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ims.imsSettingPageActivity"
-            android:label="@string/ims_title"
-            android:process="com.android.phone"
-            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -1,0 +1,34 @@
+#
+# MAL related services (Begin)
+#
+
+on property:ro.volte.startup=1
+	setprop ril.volte.stack 1
+	setprop ril.volte.ua 1
+	setprop ril.volte.imcb 1
+
+
+on property:ro.volte.startup=0
+	setprop ril.volte.stack 0
+	setprop ril.volte.ua 0
+	setprop ril.volte.imcb 0
+
+	
+
+on property:ril.mal=1
+    start mal-daemon
+
+on property:ril.mal=0
+    stop mal-daemon
+
+service mal-daemon /system/bin/mtkmal
+    class core
+    socket mal-mfi stream 660 root radio
+    socket volte_imsm stream 660 root radio
+    user radio 
+    group radio cache inet misc log system wifi
+    disabled
+
+#
+# MAL related services (End)
+#

@@ -1,6 +1,7 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
+#com.vipercn.viper4android_v2
 #LOCAL_AAPT_FLAGS 		:= --auto-add-overlay
 LOCAL_MODULE            := audio_effects.conf
 LOCAL_MODULE_TAGS       := optional
@@ -18,35 +19,35 @@ LOCAL_MODULE_PATH       := $(TARGET_OUT)/lib/soundfx
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE            := com.audlabs.viperfx.settings.xml
+LOCAL_MODULE            := com.vipercn.viper4android_v2.settings.xml
 LOCAL_MODULE_TAGS       := optional
 LOCAL_MODULE_CLASS      := ETC
-LOCAL_SRC_FILES         := com.audlabs.viperfx.settings.xml
-LOCAL_MODULE_PATH       := $(TARGET_OUT)/etc/pre-defaults/data/data/com.audlabs.viperfx/shared_prefs/
+LOCAL_SRC_FILES         := com.vipercn.viper4android_v2.settings.xml
+LOCAL_MODULE_PATH       := $(TARGET_OUT)/etc/pre-defaults/data/data/com.vipercn.viper4android_v2/shared_prefs/
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE            := com.audlabs.viperfx.speaker.xml
+LOCAL_MODULE            := com.vipercn.viper4android_v2.speaker.xml
 LOCAL_MODULE_TAGS       := optional
 LOCAL_MODULE_CLASS      := ETC
-LOCAL_SRC_FILES         := com.audlabs.viperfx.speaker.xml
-LOCAL_MODULE_PATH       := $(TARGET_OUT)/etc/pre-defaults/data/data/com.audlabs.viperfx/shared_prefs/
+LOCAL_SRC_FILES         := com.vipercn.viper4android_v2.speaker.xml
+LOCAL_MODULE_PATH       := $(TARGET_OUT)/etc/pre-defaults/data/data/com.vipercn.viper4android_v2/shared_prefs/
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE            := com.audlabs.viperfx.bluetooth.xml
+LOCAL_MODULE            := com.vipercn.viper4android_v2.bluetooth.xml
 LOCAL_MODULE_TAGS       := optional
 LOCAL_MODULE_CLASS      := ETC
-LOCAL_SRC_FILES         := com.audlabs.viperfx.bluetooth.xml
-LOCAL_MODULE_PATH       := $(TARGET_OUT)/etc/pre-defaults/data/data/com.audlabs.viperfx/shared_prefs/
+LOCAL_SRC_FILES         := com.vipercn.viper4android_v2.bluetooth.xml
+LOCAL_MODULE_PATH       := $(TARGET_OUT)/etc/pre-defaults/data/data/com.vipercn.viper4android_v2/shared_prefs/
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE            := com.audlabs.viperfx.headset.xml
+LOCAL_MODULE            := com.vipercn.viper4android_v2.headset.xml
 LOCAL_MODULE_TAGS       := optional
 LOCAL_MODULE_CLASS      := ETC
-LOCAL_SRC_FILES         := com.audlabs.viperfx.headset.xml
-LOCAL_MODULE_PATH       := $(TARGET_OUT)/etc/pre-defaults/data/data/com.audlabs.viperfx/shared_prefs/
+LOCAL_SRC_FILES         := com.vipercn.viper4android_v2.headset.xml
+LOCAL_MODULE_PATH       := $(TARGET_OUT)/etc/pre-defaults/data/data/com.vipercn.viper4android_v2/shared_prefs/
 include $(BUILD_PREBUILT)
 
 
@@ -55,26 +56,20 @@ LOCAL_MODULE            := ViPERDDC.db
 LOCAL_MODULE_TAGS       := optional
 LOCAL_MODULE_CLASS      := ETC
 LOCAL_SRC_FILES         := files/ViPERDDC.db
-LOCAL_MODULE_PATH       := $(TARGET_OUT)/etc/pre-defaults/data/data/com.audlabs.viperfx/files/
+LOCAL_MODULE_PATH       := $(TARGET_OUT)/etc/pre-defaults/data/data/com.vipercn.viper4android_v2/files/
 include $(BUILD_PREBUILT)
 
 
 
 # disable AudioFX Speaker settings
-include $(CLEAR_VARS)
-LOCAL_MODULE            := speaker.xml
-LOCAL_MODULE_TAGS       := optional
-LOCAL_MODULE_CLASS      := DATA
-LOCAL_SRC_FILES         := speaker.xml
-LOCAL_MODULE_PATH       := $(TARGET_OUT)/etc/pre-defaults/data/data/org.cyanogenmod.audiofx/shared_prefs/
-include $(BUILD_PREBUILT)
+
 
 include $(CLEAR_VARS)
 LOCAL_MODULE            := libv4a_fx_ics.so
 LOCAL_MODULE_TAGS       := optional
 LOCAL_MODULE_CLASS      := ETC
 LOCAL_SRC_FILES         := libv4a_fx_ics.so
-LOCAL_MODULE_PATH       := $(TARGET_OUT)/etc/pre-defaults/data/data/com.audlabs.viperfx/files/
+LOCAL_MODULE_PATH       := $(TARGET_OUT)/etc/pre-defaults/data/data/com.vipercn.viper4android_v2/files/
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
@@ -82,15 +77,14 @@ LOCAL_AAPT_FLAGS := --auto-add-overlay
 LOCAL_IS_HOST_MODULE =
 LOCAL_MODULE = ViperSound
 LOCAL_REQUIRED_MODULES := \
-	com.audlabs.viperfx.speaker.xml \
-	com.audlabs.viperfx.settings.xml \
-	com.audlabs.viperfx.bluetooth.xml \
-	com.audlabs.viperfx.headset.xml \
+	com.vipercn.viper4android_v2.speaker.xml \
+	com.vipercn.viper4android_v2.settings.xml \
+	com.vipercn.viper4android_v2.bluetooth.xml \
+	com.vipercn.viper4android_v2.headset.xml \
 	libv4a_fx_ics.so \
 	audio_effects.conf \
 	ViPERDDC.db \
-#	speaker.xml \
-#	ViPERDDC.db \
+
 
 LOCAL_OVERRIDES_PACKAGES := AudioFX
 LOCAL_MODULE_CLASS = APPS

@@ -24,7 +24,6 @@ LOCAL_SRC_FILES := \
     mtk_omx.cpp \
     IGraphicBufferConsumer.cpp \
     BufferItemConsumer.cpp \
-    mtk_fence.cpp \
 
 # only for 64bit libraries
 LOCAL_SRC_FILES_32 := mtk_string.cpp

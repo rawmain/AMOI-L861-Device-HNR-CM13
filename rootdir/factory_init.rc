@@ -48,6 +48,7 @@ loglevel 5
 
 # Backwards Compat - XXX: Going away in G*
     symlink /mnt/sdcard /sdcard
+    symlink /sdcard  /storage/sdcard0
 
     mkdir /system
     mkdir /data 0771 system system
@@ -117,6 +118,8 @@ on fs
     write /proc/bootprof "INIT:Mount_END"
 
 on post-fs
+
+
     chown system system /protect_f
     chmod 0770 /protect_f
 

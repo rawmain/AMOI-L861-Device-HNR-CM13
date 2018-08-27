@@ -54,12 +54,16 @@
 
 #define MTK_TELEPHONY_BOOTUP_MODE_SLOT1	0
 #define MTK_TELEPHONY_BOOTUP_MODE_SLOT2	1
+
 #define MTK_IMS_SUPPORT		"ro.mtk_ims_support"
 #define MTK_VOLTE_SUPPORT	"ro.mtk_volte_support"
+#define MTK_VILTE_SUPPORT	"ro.mtk_vilte_support"
+#define MTK_LTE_DC_SUPPORT  "ro.mtk_lte_dc_support" 
+
 
 static int parse_info(char raw_data[], int raw_size, char name[], char val[], int size)
 {
-	int i,j;
+	int i=0,j=0;
 	char tmp_name[32];
 	char tmp_val[32];
 	int state = 0;
@@ -182,7 +186,7 @@ int query_prj_cfg_setting(char name[], char val[], int size)
 
 //-- For MTK_IMS_SUPPORT 
 	if(property_get(MTK_IMS_SUPPORT, value, NULL) > 0) {
-		if(strstr("yes,ture,on", value) > 0) {
+		if(strstr("yes,ture,on,1", value) > 0) {
 			if(strcmp(name, "MTK_IMS_SUPPORT")==0) {
 				snprintf(val, size, "1");
 				return 0;
@@ -192,8 +196,28 @@ int query_prj_cfg_setting(char name[], char val[], int size)
 
 //-- For MTK_VOLTE_SUPPORT
 	if(property_get(MTK_VOLTE_SUPPORT, value, NULL) > 0) {
-		if(strstr("yes,ture,on", value) > 0) {
+		if(strstr("yes,ture,on,1", value) > 0) {
 			if(strcmp(name, "MTK_VOLTE_SUPPORT")==0) {
+				snprintf(val, size, "1");
+				return 0;
+			}
+		}
+	}
+
+//-- For MTK_VILTE_SUPPORT
+	if(property_get(MTK_VILTE_SUPPORT, value, NULL) > 0) {
+		if(strstr("yes,ture,on,1", value) > 0) {
+			if(strcmp(name, "MTK_VILTE_SUPPORT")==0) {
+				snprintf(val, size, "1");
+				return 0;
+			}
+		}
+	}
+
+//-- For MTK_LTE_DC_SUPPORT
+	if(property_get(MTK_LTE_DC_SUPPORT, value, NULL) > 0) {
+		if(strstr("yes,ture,on,1", value) > 0) {
+			if(strcmp(name, "MTK_LTE_DC_SUPPORT")==0) {
 				snprintf(val, size, "1");
 				return 0;
 			}

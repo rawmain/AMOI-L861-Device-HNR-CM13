@@ -453,6 +453,10 @@ on post-fs-data
     # Set indication (checked by vold) that we have finished this action
     #setprop vold.post_fs_data_done 1
 
+    # allow net_raw to have access to /dev/socket directory
+    # chown root net_raw /dev/socket
+    # chmod 0775 /dev/socket
+
 on boot
     # basic network init
     ifup lo
@@ -597,6 +601,9 @@ on property:sys.sysctl.extra_free_kbytes=*
 on property:sys.sysctl.tcp_def_init_rwnd=*
     write /proc/sys/net/ipv4/tcp_default_init_rwnd ${sys.sysctl.tcp_def_init_rwnd}
 
+# "disable logd"
+on property:ro.logd.disable=1
+    stop logd
 
 ## Daemon processes to be run by init.
 ##
@@ -611,7 +618,7 @@ service logd /system/bin/logd
     socket logdr seqpacket 0666 logd logd
     socket logdw dgram 0222 logd logd
     group root system
-     writepid /dev/cpuset/system-background/tasks
+    writepid /dev/cpuset/system-background/tasks
 
 service logd-reinit /system/bin/logd --reinit
     oneshot
@@ -787,11 +794,11 @@ service pre-recovery /system/bin/uncrypt --reboot
     disabled
     oneshot
 
-service perfprofd /system/xbin/perfprofd
-    class late_start
-    user root
-    oneshot
-    writepid /dev/cpuset/system-background/tasks
+#service perfprofd /system/xbin/perfprofd
+#    class late_start
+#    user root
+#    oneshot
+#    writepid /dev/cpuset/system-background/tasks
 
 on property:persist.logd.logpersistd=logcatd
     # all exec/services are called with umask(077), so no gain beyond 0700

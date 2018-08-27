@@ -48,6 +48,7 @@ typedef struct governor_settings {
     int down_threshold; //50
     int rush_boost_threshold; // 50
     int num_limit_power_serv; // 4 is optimal
+    char *thermal_profile;
 } power_profile;
 
 // cpufreq table
@@ -76,7 +77,27 @@ thermal manager mode
 ptpod_temperature_limit_1 = 110000
 ptpod_temperature_limit_2 = 120000 
 */
- 
+
+
+/*
+/sys/module/pvrsrvkm
+/sys/module/pvrsrvkm/parameters
+/sys/module/pvrsrvkm/parameters/gpu_freq
+/sys/module/pvrsrvkm/parameters/gpu_idle
+/sys/module/pvrsrvkm/parameters/gpu_dvfs_enable
+/sys/module/pvrsrvkm/parameters/gpu_block
+/sys/module/pvrsrvkm/parameters/gpu_power
+/sys/module/pvrsrvkm/parameters/gpu_dvfs_cb_force_idle
+/sys/module/pvrsrvkm/parameters/gPVRDebugLevel
+/sys/module/pvrsrvkm/parameters/gpu_loading
+/sys/module/pvrsrvkm/parameters/boost_gpu_enable
+/sys/module/pvrsrvkm/parameters/gpu_cust_boost_freq
+/sys/module/pvrsrvkm/parameters/gpu_dvfs_force_idle
+/sys/module/pvrsrvkm/parameters/gpu_cust_upbound_freq
+/sys/module/pvrsrvkm/parameters/gpu_debug_enable
+/sys/module/pvrsrvkm/parameters/gpu_bottom_freq
+*/
+
 static power_profile profiles[PROFILE_MAX] = {
     [PROFILE_POWER_SAVE] = {
 		.scheduler = "noop",
@@ -84,7 +105,7 @@ static power_profile profiles[PROFILE_MAX] = {
 		.up_threshold = 99, 
         .down_threshold = 70,
         .rush_boost_threshold = 50,
-        .num_limit_power_serv = 2,
+        .num_limit_power_serv = 3,
         //.input_boost =0,
 		//end hps
 		.above_hispeed_delay = "0",
@@ -103,7 +124,8 @@ static power_profile profiles[PROFILE_MAX] = {
         .scaling_min_freq = 403000,
         .scaling_min_freq_off = 403000,
         .cpufreq_turbo_mode = 0,
-        .gpu_opp_max_freq = 253500,
+        .gpu_opp_max_freq = 338000,
+        .thermal_profile="/system/etc/.tp/thermal.low.conf"
     },
     [PROFILE_BIAS_POWER_SAVE] = {
 		.scheduler = "noop",
@@ -111,7 +133,7 @@ static power_profile profiles[PROFILE_MAX] = {
 		.up_threshold = 30, 
         .down_threshold = 50,
         .rush_boost_threshold = 50,
-        .num_limit_power_serv = 3,
+        .num_limit_power_serv = 4,
 		//end hps
 		.above_hispeed_delay = "80000",
         .boost = 0,
@@ -134,6 +156,7 @@ static power_profile profiles[PROFILE_MAX] = {
         .scaling_min_freq_off = 403000,
         .cpufreq_turbo_mode = 0,
         .gpu_opp_max_freq = 546000,
+        .thermal_profile = "/system/etc/.tp/thermal.low.conf",
     },
     [PROFILE_BALANCED] = {
 		.scheduler = "noop",
@@ -162,8 +185,9 @@ static power_profile profiles[PROFILE_MAX] = {
         .scaling_max_freq = 1183000,
         .scaling_min_freq = 403000,
         .scaling_min_freq_off = 403000,
-        .cpufreq_turbo_mode = 1,
+        .cpufreq_turbo_mode = 0,
         .gpu_opp_max_freq = 546000,
+        .thermal_profile = "/system/etc/.tp/thermal.mid.conf",
     },
     [PROFILE_BIAS_PERFORMANCE] = {
 		.scheduler = "noop",
@@ -171,7 +195,7 @@ static power_profile profiles[PROFILE_MAX] = {
 		.up_threshold = 50, 
         .down_threshold = 50,
         .rush_boost_threshold = 50,
-        .num_limit_power_serv = 8,
+        .num_limit_power_serv = 6,
 		//end hps
 		.above_hispeed_delay = "10000 1326000:30000",
 	    .boost = 0,
@@ -189,7 +213,8 @@ static power_profile profiles[PROFILE_MAX] = {
         .scaling_min_freq = 403000,
         .scaling_min_freq_off = 403000,
         .cpufreq_turbo_mode = 1,
-        .gpu_opp_max_freq = 676000,	
+        .gpu_opp_max_freq = 676000,
+        .thermal_profile = "/system/etc/.tp/thermal.off.conf",
 	},
     [PROFILE_HIGH_PERFORMANCE] = {
 		.scheduler = "noop",
@@ -218,5 +243,6 @@ static power_profile profiles[PROFILE_MAX] = {
         .scaling_min_freq_off = 403000,
         .cpufreq_turbo_mode = 2,
         .gpu_opp_max_freq = 676000,
+        .thermal_profile = "/system/etc/.tp/thermal.off.conf",
     },
 };

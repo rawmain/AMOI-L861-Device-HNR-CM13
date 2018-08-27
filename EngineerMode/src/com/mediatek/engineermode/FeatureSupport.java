@@ -74,6 +74,7 @@ public class FeatureSupport {
     }
 
     public static boolean isUserLoad() {
-        return USER_LOAD.equals(SystemProperties.get("ro.build.type"));
+		return false;
+        //return USER_LOAD.equals(SystemProperties.get("ro.build.type"));
     }
 }

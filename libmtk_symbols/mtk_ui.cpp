@@ -1,6 +1,7 @@
 #include <ui/GraphicBufferMapper.h>
 #include <ui/Rect.h>
 #include <media/openmax/OMX_Core.h>
+#include <unistd.h>
 
 extern "C" {
     //void _ZN7android19GraphicBufferMapper9lockYCbCrEPK13native_handlejRKNS_4RectEP13android_ycbcr(buffer_handle_t, uint32_t, const android::Rect&, android_ycbcr*);
@@ -29,13 +30,15 @@ extern "C" {
 		return NULL;
 		}
 		
-		
+
 	extern void _ZN7android5Fence4waitEi(int);
 
     extern void _ZN7android5Fence4waitEj(unsigned int timeout) {
+		 //usleep(10000); // 10 millsec
         _ZN7android5Fence4waitEi(static_cast<int>(timeout));
     }	
-/*
+	
+	/*
 
    
     unsigned int _ZN7android3OMX17OnEmptyBufferDoneEjjP20OMX_BUFFERHEADERTYPE(unsigned int h, unsigned int b, OMX_BUFFERHEADERTYPE* bt){

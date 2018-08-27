@@ -15,6 +15,8 @@
 -->
 
 <resources>
+    <!-- DEPRECATED: Use CarrierConfigManager#KEY_PREFER_2G_BOOL -->
+    <bool name="config_prefer_2g" translatable="false">false</bool>
     <!-- Determine whether calls to mute the microphone in PhoneUtils
          are routed through the android.media.AudioManager class (true) or through
          the com.android.internal.telephony.Phone interface (false). -->
@@ -31,4 +33,10 @@
 
     <!-- Show enabled lte option for lte device -->
     <bool name="config_enabled_lte" translatable="false">true</bool>
+    
+    <!-- Flag indicating if hac is enabled -->
+    <bool name="hac_enabled">true</bool>
+    <!-- Display enhanced 4G LTE mode menu if true -->
+    <bool name="config_enhanced_4g_lte_mode_enable" translatable="false">true</bool>
+    
 </resources>

@@ -1,4 +1,4 @@
-#ifeq ($(strip $(MTK_AUTO_TEST)), yes)
+ifeq ($(strip $(MTK_AUTO_TEST)), yes)
 	LOCAL_PATH:= $(call my-dir)
 	include $(CLEAR_VARS)
     # We only want this apk build for tests.
@@ -29,4 +29,4 @@
     include $(BUILD_MULTI_PREBUILT)
     #Edd add
 
-#endif
+endif
