@@ -82,9 +82,16 @@ persist.mtk.volte.enable=1 \
 # TRON APPS
 PRODUCT_PACKAGES += \
     CDS_INFO \
-	ViperSound \
 	AdAway \
 	YGPS \
+
+ifneq ($(USE_VIPER_PROFILES),true)
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf
+else
+PRODUCT_PACKAGES += \
+	ViperSound
+endif
 
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/apks/themes/S7D.apk:data/app/S7D/S7D.apk \
@@ -165,10 +172,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_device.xml:system/etc/audio_device.xml \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/configs/audio_em.xml:system/etc/audio_em.xml \
-    $(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf \
-    $(LOCAL_PATH)/configs/init.d/01audiolevel:system/etc/init.d/01audiolevel \
     $(LOCAL_PATH)/configs/init.d/02initsettings:system/etc/init.d/02initsettings \
-#    $(LOCAL_PATH)/configs/audio_param/AudioParamOptions.xml:system/etc/audio_param/AudioParamOptions.xml
+    $(LOCAL_PATH)/configs/init.d/04accufix:system/etc/init.d/04accufix \
+    $(LOCAL_PATH)/configs/init.d/01audiolevel:system/etc/init.d/01audiolevel \
+#   $(LOCAL_PATH)/configs/audio_param/AudioParamOptions.xml:system/etc/audio_param/AudioParamOptions.xml
+
 
 
 # Charger

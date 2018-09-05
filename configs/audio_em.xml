@@ -43,9 +43,12 @@
         <Option>HAHA=0</Option>
         <Option>Set_SpeechCall_DL_Mute=0</Option>
         <Option>SetFmVolume=0</Option>
+        <!--
         <Option>SetBesLoudnessStatus=1</Option>
         <Option>SetMusicPlusStatus=1</Option>
         <Option>SetBesAudEnhStatus=1</Option>
+        -->
+        <Option>SetAudEnhStatus=1</Option>
         <Option>ANC_CMD=0</Option>
         <Option>af.dumplog=1</Option>
     </SetParameters>

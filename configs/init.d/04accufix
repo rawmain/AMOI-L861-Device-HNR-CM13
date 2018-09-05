@@ -1,0 +1,10 @@
+#!/system/bin/sh
+F="/system/etc/sysconfig/google.xml"
+if ! test -e $F ; then exit 0; fi
+if busybox grep -q '<!-- <allow-in-power-save package="com.google.android.gms"' $F ; then exit 0;fi
+mount -o remount,rw /system
+busybox sed -i -e 's|<allow-in-power-save package="com.google.android.gms" />|<!-- <allow-in-power-save package="com.google.android.gms" /> -->|g' $F
+sync
+mount -o remount,ro /system
+echo "gms Service fixed"
+exit 0

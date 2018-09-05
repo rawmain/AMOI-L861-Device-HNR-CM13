@@ -2,6 +2,9 @@
 #
 # system.prop for OpenStone Stonex One
 #
+
+ro.egl.destroy_after_detach=true
+
 ro.enable_boot_charger_mode=true
 ro.logd.disable=1
 #
@@ -21,6 +24,7 @@ mtk.omxvdec.ufo=0
 mtk.vcodec.detect.trailing=0
 mtk.omxvdec.ad.vp=0
 mtk.vdec.h264.ec=0
+
 
 #logcat.live=disable
 ro.ril.enable.amr.wideband=1
@@ -114,10 +118,6 @@ ro.mtk.audenh.support=1
 ro.mtk.besloudness.support=1
 ro.mtk.besaudenh.support=1
 ro.mtk.bessurround.support=0
-ro.mtk_besloudness_support=1
-ro.mtk_audenh_support=1
-ro.mtk_besaudenh_support=1
-ro.mtk_bessurround_support=0
 ro.mtk_audio_tuning_tool_ver=V1
 # ro.mtk_wmv_playback_support=1
 ro.mtk_fm_recording_support=1

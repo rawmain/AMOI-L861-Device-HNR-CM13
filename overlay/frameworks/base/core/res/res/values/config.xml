@@ -31,7 +31,7 @@
 
 		
     <!-- Enable the electron beam -->
-    <bool name="config_animateScreenLights">true</bool>
+    <bool name="config_animateScreenLights">false</bool>
 
     <!-- Remote server that can provide NTP responses. -->
     <string translatable="false" name="config_ntpServer">asia.pool.ntp.org</string>

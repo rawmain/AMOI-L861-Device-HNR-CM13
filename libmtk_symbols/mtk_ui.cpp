@@ -1,7 +1,16 @@
+
+
+#define LOG_TAG "Ui"
+#define ATRACE_TAG ATRACE_TAG_GRAPHICS
+
+
 #include <ui/GraphicBufferMapper.h>
 #include <ui/Rect.h>
 #include <media/openmax/OMX_Core.h>
 #include <unistd.h>
+#include <utils/Log.h>
+
+// #include <ui/Fence.h>
 
 extern "C" {
     //void _ZN7android19GraphicBufferMapper9lockYCbCrEPK13native_handlejRKNS_4RectEP13android_ycbcr(buffer_handle_t, uint32_t, const android::Rect&, android_ycbcr*);
@@ -31,11 +40,23 @@ extern "C" {
 		}
 		
 
-	extern void _ZN7android5Fence4waitEi(int);
+/*
+    status_t __attribute__((weak)) _ZN7android5Fence4waitEj (unsigned int timeout);
 
-    extern void _ZN7android5Fence4waitEj(unsigned int timeout) {
-		 //usleep(10000); // 10 millsec
-        _ZN7android5Fence4waitEi(static_cast<int>(timeout));
+    status_t _ZN7android5Fence4waitEi (int timeout) {
+		// usleep(10000); // 10 millsec
+        return _ZN7android5Fence4waitEj((unsigned int)(timeout));
+    }
+*/
+
+	
+
+	extern status_t _ZN7android5Fence4waitEi(int);
+
+    extern status_t _ZN7android5Fence4waitEj(unsigned int timeout) {
+		ALOGD("WAITING FOR MAX %du ",timeout);
+		// usleep(10000); // 10 millsec
+         return _ZN7android5Fence4waitEi(static_cast<int>(timeout));
     }	
 	
 	/*

@@ -11,10 +11,17 @@ chmod 660 /data/nvram/APCFG/APRDCL/Audio_CompFlt
 chmod 660 /data/nvram/APCFG/APRDCL/MusicDRC_CompFlt
 chmod 660 /data/nvram/APCFG/APRDCL/HWMON_ACC
 
+#BesLoudness Only (Recommended)
 echo -n -e \
-\\x03\\x00\\x00\\x00\\xAA\\x03\
+\\x02\\x00\\x00\\x00\\xAA\\x02\
  > /data/nvram/APCFG/APRDCL/Audio_AudEnh_Control_Opt
 # End of Audio_AudEnh_Control_Opt
+
+# BesLoudness + Audenh 
+# echo -n -e \
+# \\x03\\x00\\x00\\x00\\xAA\\x03\
+#  > /data/nvram/APCFG/APRDCL/Audio_AudEnh_Control_Opt
+#  End of Audio_AudEnh_Control_Opt
 
 echo -n -e \
 \\x20\\x30\\x40\\x50\\x60\\x70\\x80\\x90\\xA0\\xB0\\xC0\\xD0\\xE0\\xF0\\xFF\
@@ -518,14 +525,23 @@ echo -n -e \
  > /data/nvram/APCFG/APRDCL/HWMON_ACC
 # End of HWMON_ACC
 
-# chmod 440 /data/nvram/APCFG/APRDCL/Audio_AudEnh_Control_Opt
-# chmod 440 /data/nvram/APCFG/APRDCL/Audio_ver1_Vol_custom
-# chmod 440 /data/nvram/APCFG/APRDCL/Audio_Sph
-# chmod 440 /data/nvram/APCFG/APRDCL/Audio_Wb_Sph
-# chmod 440 /data/nvram/APCFG/APRDCL/AUXADC
-# chmod 440 /data/nvram/APCFG/APRDCL/Audio_CompFlt
-# chmod 440 /data/nvram/APCFG/APRDCL/MusicDRC_CompFlt
-# chmod 440 /data/nvram/APCFG/APRDCL/HWMON_ACC
+chmod 660 /data/nvram/APCFG/APRDCL/Audio_AudEnh_Control_Opt
+chmod 660 /data/nvram/APCFG/APRDCL/Audio_ver1_Vol_custom
+chmod 660 /data/nvram/APCFG/APRDCL/Audio_Sph
+chmod 660 /data/nvram/APCFG/APRDCL/Audio_Wb_Sph
+chmod 660 /data/nvram/APCFG/APRDCL/AUXADC
+chmod 660 /data/nvram/APCFG/APRDCL/Audio_CompFlt
+chmod 660 /data/nvram/APCFG/APRDCL/MusicDRC_CompFlt
+chmod 660 /data/nvram/APCFG/APRDCL/HWMON_ACC
+
+chown root:system /data/nvram/APCFG/APRDCL/Audio_AudEnh_Control_Opt
+chown root:system /data/nvram/APCFG/APRDCL/Audio_ver1_Vol_custom
+chown root:system /data/nvram/APCFG/APRDCL/Audio_Sph
+chown root:system /data/nvram/APCFG/APRDCL/Audio_Wb_Sph
+chown root:system /data/nvram/APCFG/APRDCL/AUXADC
+chown root:system /data/nvram/APCFG/APRDCL/Audio_CompFlt
+chown root:system /data/nvram/APCFG/APRDCL/MusicDRC_CompFlt
+chown root:system /data/nvram/APCFG/APRDCL/HWMON_ACC
 
 fi
 exit 0;

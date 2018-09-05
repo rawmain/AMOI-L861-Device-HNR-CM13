@@ -2,8 +2,9 @@
 
 if [ ! -e "/data/pre-finish" ] ; then
 
-while true ;do if [ -e "/storage/emulated/0" ] ; then break; fi ; sleep 2 ;done
-sleep 10
+
+while true ;do if [ -d "/storage/emulated/0" ] ; then break; fi ; sleep 2 ;done
+sleep 5
 
 BP="/system/etc/pre-defaults"
 #for i in $(find "$BP" -type f)
