@@ -6,7 +6,21 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := healthd_board_mtk.cpp
 LOCAL_MODULE := libhealthd.mtk
 LOCAL_CFLAGS := -Werror
-LOCAL_C_INCLUDES := system/core/healthd bootable/recovery
+
+LOCAL_C_INCLUDES := \
+    system/core/healthd \
+    bootable/recovery-twrp \
+    
+ifneq ($(BACKLIGHT_PATH),)
+    LOCAL_CFLAGS += -DHEALTHD_BACKLIGHT_PATH=\"$(BACKLIGHT_PATH)\"
+endif
+ifneq ($(SECONDARY_BACKLIGHT_PATH),)
+    LOCAL_CFLAGS += -DHEALTHD_SECONDARY_BACKLIGHT_PATH=\"$(SECONDARY_BACKLIGHT_PATH)\"
+endif
+ifneq ($(HEALTHD_BACKLIGHT_LEVEL),)
+    LOCAL_CFLAGS += -DHEALTHD_BACKLIGHT_LEVEL=$(HEALTHD_BACKLIGHT_LEVEL)
+endif
+
 include $(BUILD_STATIC_LIBRARY)
 
 #endif

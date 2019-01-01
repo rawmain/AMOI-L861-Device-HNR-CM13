@@ -18,16 +18,16 @@ LOCAL_PATH := device/openstone/stonexone
 # TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 TARGET_TAP_TO_WAKE_NODE := /proc/gt9xx_gesture
-# important for HWCOMPOSER ERROR!
-# BOARD_DONT_USE_NATIVE_FENCE_SYNC := true
-# end important
-# COMMON_GLOBAL_CPPFLAGS += -DDONT_USE_FENCE_SYNC
+
+
 MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
 
 TARGET_USES_ION := true
 
 TARGET_TS_MAKEUP := true
 #USE_VENDOR_BOOTJARS := yes
+# TARGET_USES_OVERLAY := true
+
 
 
 #SKIP_BOOT_JARS_CHECK := true
@@ -138,6 +138,7 @@ USE_SENSOR_MULTI_HAL := true
 LCM_WIDTH := 1440
 LCM_HEIGHT := 2560
 MTK_WVDRM_SUPPORT := yes
+
 #
 # Platform
 ARCH_ARM_HAVE_TLS_REGISTER := true
@@ -230,7 +231,7 @@ TARGET_BOOTLOADER_BOARD_NAME := mt6795
 # FIX Freezing
 TARGET_NO_SENSOR_PERMISSION_CHECK := true
 TARGET_REQUIRES_SYNCHRONOUS_SETSURFACE := true
-
+# BOARD_EGL_NEEDS_HANDLE_VALUE := true
 
 
 # MTK Hardware
@@ -279,6 +280,9 @@ $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
 
 # Display
 USE_OPENGL_RENDERER := true
+#BOARD_DONT_USE_NATIVE_FENCE_SYNC := true
+#BOARD_NO_SUPPORT_SWAP_BUFFERS_WITH_DAMAGE := true
+TARGET_USES_OVERLAY := true
 BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
 #BOARD_NO_SUPPORT_SWAP_BUFFERS_WITH_DAMAGE := true
 
@@ -313,7 +317,7 @@ RED_LED_PATH := /sys/class/leds/red/brightness
 GREEN_LED_PATH := /sys/class/leds/green/brightness
 CHARGING_ENABLED_PATH := /sys/class/power_supply/battery/charging_enabled
 BACKLIGHT_PATH  := /sys/class/leds/lcd-backlight/brightness
-HEALTHD_BACKLIGHT_LEVEL := 20
+HEALTHD_BACKLIGHT_LEVEL := 100
 # Next lines, fix charging-mod on power off. It needs to modify the init.cpp, too.
 
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/BOOT/BOOT/boot/boot_mode

@@ -3,8 +3,6 @@
 # system.prop for OpenStone Stonex One
 #
 
-ro.egl.destroy_after_detach=true
-
 ro.enable_boot_charger_mode=true
 ro.logd.disable=1
 #

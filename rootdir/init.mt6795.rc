@@ -1301,9 +1301,9 @@ service memsicd3416x /system/bin/memsicd3416x
     user system
     group system
     class main
-//Vanzo:dingge on: Mon, 20 Apr 2015 12:48:51 +0800
+# Vanzo:dingge on: Mon, 20 Apr 2015 12:48:51 +0800
     oneshot
-//End of Vanzo: dingge
+# End of Vanzo: dingge
 
 service akmd8975 /system/bin/akmd8975
     disabled

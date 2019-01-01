@@ -126,6 +126,7 @@ ALOGI("MTK PowerHAL INIT");
 
 static void power_set_interactive(__attribute__((unused)) struct power_module *module, int on)
 {
+	#if 0
     if (!is_profile_valid(current_power_profile)) {
         ALOGD("%s: no power profile selected yet", __func__);
         return;
@@ -133,9 +134,14 @@ static void power_set_interactive(__attribute__((unused)) struct power_module *m
 
     if (on) {
 		ALOGD("%s: interactive on", __func__);
-		sysfs_write_int(MT_HPS_PATH "num_limit_power_serv",profiles[current_power_profile].num_limit_power_serv);
-		sysfs_write_int(CPUFREQ_PATH "scaling_max_freq", profiles[current_power_profile].scaling_max_freq);
-		sysfs_write_int(GPUFREQ_PATH "gpufreq_opp_max_freq", profiles[current_power_profile].gpu_opp_max_freq);
+		
+		//sysfs_write_int(MT_HPS_PATH "num_limit_power_serv",8);
+		//sysfs_write_int(CPUFREQ_PATH "scaling_max_freq", 1950000);
+		//sysfs_write_int(GPUFREQ_PATH "gpufreq_opp_max_freq", 676000);
+		
+		//sysfs_write_int(MT_HPS_PATH "num_limit_power_serv",profiles[current_power_profile].num_limit_power_serv);
+		//sysfs_write_int(CPUFREQ_PATH "scaling_max_freq", profiles[current_power_profile].scaling_max_freq);
+		//sysfs_write_int(GPUFREQ_PATH "gpufreq_opp_max_freq", profiles[current_power_profile].gpu_opp_max_freq);
 		    
         sysfs_write_int(INTERACTIVE_PATH "hispeed_freq",
                         profiles[current_power_profile].hispeed_freq);
@@ -161,10 +167,11 @@ static void power_set_interactive(__attribute__((unused)) struct power_module *m
         sysfs_write_int(CPUFREQ_PATH "scaling_min_freq",
                         profiles[current_power_profile].scaling_min_freq_off);
                         
-        sysfs_write_int(MT_HPS_PATH "num_limit_power_serv",1);
-		sysfs_write_int(CPUFREQ_PATH "scaling_max_freq", 1950000);
-		sysfs_write_int(GPUFREQ_PATH "gpufreq_opp_max_freq", 676000);
-    } 
+		//sysfs_write_int(MT_HPS_PATH "num_limit_power_serv",1);
+		//sysfs_write_int(CPUFREQ_PATH "scaling_max_freq", 1950000);
+		//sysfs_write_int(GPUFREQ_PATH "gpufreq_opp_max_freq", 676000);
+    }
+    #endif
 }
 
 static int boostpulse_open()

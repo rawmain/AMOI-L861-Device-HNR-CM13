@@ -150,6 +150,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.legacyencoder=true \
     media.stagefright.less-secure=true \
     persist.camera.eis.enable=1 \
+#	ro.egl.destroy_after_detach=true \
+    
+    
     #camera.disable_zsl_mode=1
 	#persist.camera.HAL3.enabled=1 \
 	#persist.camera.eis.enable=1 \
